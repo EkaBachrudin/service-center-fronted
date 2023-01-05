@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <div *ngIf="isOpenSidebar == false; else isSidebar">
+      <div class="menu-btn" (click)="openSidebar()">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+    <ng-template #isSidebar>
+      <div class="menu-btn" (click)="closeSidebar()">
+        <i class="fas fa-bars"></i>
+      </div>
+    </ng-template>
+    <a class="navbar-brand cursive" routerLink="/">Personal App</a>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <!--        <a class="nav-link active" aria-current="page" href="#">Home</a>-->
+        <!--        <a class="nav-link" href="#">Features</a>-->
+        <!--        <a class="nav-link" href="#">Pricing</a>-->
+        <!--        <a class="nav-link disabled">Disabled</a>-->
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="side-bar">
+  <div class="menu">
+    <div class="item"> <a routerLink="/"> Dashboard </a> </div>
+    <!-- <div class="item">
+      <a href="#" class="sub-btn" (click)="slideToggle($event, 'table', 200)"> Table <i class="fas fa-angle-right dropdown"></i> </a>
+      <div class="sub-menu"  id="table">
+        <a href="#" class="sub-item">Sub item 01</a>
+        <a href="#" class="sub-item">Sub item 02</a>
+        <a href="#" class="sub-item">Sub item 03</a>
+      </div>
+    </div> -->
+    <div class="cursive mt-4 text-white ms-4"> <h5>Work</h5> </div>
+    <div class="item"> <a routerLink="/notes"> Notes </a> </div>
+    <div class="cursive mt-4 text-white ms-4"> <h5>Personal</h5> </div>
+    <div class="item"> <span class="outIcon"></span> Logout </div>
+  </div>
+</div>
+
