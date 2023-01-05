@@ -1,0 +1,102 @@
+.side-bar {
+  background-color: #303030;
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  overflow-y: auto;
+  font-size: small;
+  transition: left .5s;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.side-bar .menu {
+  width: 100%;
+  margin-top: 80px;
+}
+
+.side-bar .menu .item {
+  position: relative;
+  cursor: pointer;
+}
+
+.side-bar .menu .item a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 0 30px;
+  line-height: 50px;
+}
+
+.side-bar .menu .item a:hover {
+  color: #74bdff;
+  background-color: #434343;
+}
+
+.side-bar .menu .item i {
+  margin-right: 15px;
+}
+
+.side-bar .menu .item a .dropdown {
+  position: absolute;
+  right: 0;
+  margin: 20px;
+  transition: 1 ease;
+}
+
+.side-bar .menu .item .sub-menu{
+  background-color: #303030;
+  display: none;
+}
+
+.side-bar .menu .item .sub-menu a {
+  padding-left: 40px;
+}
+
+.rotate {
+  transform: rotate(90deg);
+}
+
+.close-btn {
+  position: absolute;
+  color: white;
+  font-size: 20px;
+  right: 0;
+  margin: 25px;
+  cursor: pointer;
+}
+
+.menu-btn {
+  color: black;
+  font-size: 10px;
+  margin: 20px;
+  cursor: pointer;
+}
+
+.navbar{
+  margin-left: 250px;
+  transition: margin-left .5s;
+}
+
+.outIcon{
+
+  background-repeat: no-repeat;
+  padding: 5px 15px;
+  background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' color='white' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-log-out'%3E%3Cpath d='M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4'%3E%3C/path%3E%3Cpolyline points='16 17 21 12 16 7'%3E%3C/polyline%3E%3Cline x1='21' y1='12' x2='9' y2='12'%3E%3C/line%3E%3C/svg%3E");
+}
+
+@media screen and (max-width: 1000px) {
+  .side-bar {
+    left: -100%;
+    transition: left .5s;
+  }
+
+  .navbar{
+    margin-left: 0;
+    transition: margin-left .5s;
+  }
+}
+
