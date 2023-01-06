@@ -1,5 +1,86 @@
 <app-content>
   <ng-container content>
-    <p>Counter Control</p>
+    <div class="row">
+      <div class="col-md-12">
+        <p>Counter Control</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card pb-2">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-2">
+                <label for="status">Status</label>
+                <select class="input" id="status">
+                  <option value="">All Status</option>
+                </select>
+              </div>
+              <div class="col-md-2">
+                <label for="search">Search</label>
+                <input type="text" class="input" id="search" autocomplete="off">
+              </div>
+              <div class="col-md-2 d-flex align-items-end">
+                <span class="btn text-center mt-3">Search</span>
+              </div>
+              <div class="col-md-6 d-flex align-items-end justify-content-lg-end justify-content-md-end">
+                <a routerLink="/admin/counter/add"><span class="btn mt-3">Add Counter</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body table-responsive-sm">
+            <table class="table text-white">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Counter Name</th>
+                  <th>Purpose</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>No</td>
+                <td>Lorem dadadadadadadskflkfzkfj;lkfdj;lkzjf;kzsdjf</td>
+                <td>Purpose</td >
+                <td>None Active dadadsas</td>
+                <td>Actions</td >
+              </tr>
+              <tr>
+                <td>No</td>
+                <td>Counter Name</td>
+                <td>Purpose</td >
+                <td>Status</td>
+                <td>Actions</td >
+              </tr>
+              <tr>
+                <td>No</td>
+                <td>Counter Name</td>
+                <td>Purpose</td >
+                <td>Status</td>
+                <td>Actions</td >
+              </tr>
+              <tr>
+                <td>No</td>
+                <td>Counter Name</td>
+                <td>Purpose</td >
+                <td>Status</td>
+                <td>Actions</td >
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </ng-container>
 </app-content>

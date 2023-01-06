@@ -4,17 +4,23 @@ import { CounterAdminComponent } from './components/counter-admin/counter-admin.
 import {ContentModule} from "../../../shared/content/content.module";
 import {RouterModule} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { AddCounterComponent } from './components/add-counter/add-counter.component';
 
 const routes = [
   {
     path: 'admin/counter',
     component: CounterAdminComponent,
   },
+  {
+    path: 'admin/counter/add',
+    component: AddCounterComponent,
+  },
 ];
 
 @NgModule({
   declarations: [
-    CounterAdminComponent
+    CounterAdminComponent,
+    AddCounterComponent
   ],
     imports: [
         CommonModule,
