@@ -6,7 +6,6 @@
   top: 0;
   overflow-y: auto;
   font-size: small;
-  transition: left .5s;
   font-family: 'Inknut Antiqua', serif;
 }
 .circle {
@@ -87,7 +86,6 @@
   position: absolute;
   right: 0;
   margin: 20px;
-  transition: 1 ease;
 }
 
 .side-bar .menu .item .sub-menu{
@@ -97,10 +95,6 @@
 
 .side-bar .menu .item .sub-menu a {
   padding-left: 40px;
-}
-
-.rotate {
-  transform: rotate(90deg);
 }
 
 .close-btn {
@@ -121,8 +115,8 @@
 
 .navbar{
   margin-left: 250px;
-  transition: margin-left .5s;
   background-color: var(--50);
+  border-bottom: none;
 }
 
 .fa-bars{
@@ -136,15 +130,17 @@
   background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' color='white' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-log-out'%3E%3Cpath d='M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4'%3E%3C/path%3E%3Cpolyline points='16 17 21 12 16 7'%3E%3C/polyline%3E%3Cline x1='21' y1='12' x2='9' y2='12'%3E%3C/line%3E%3C/svg%3E");
 }
 
+h4{
+  font-family: 'Inknut Antiqua', serif;
+}
+
 @media screen and (max-width: 1000px) {
   .side-bar {
     left: -100%;
-    transition: left .5s;
   }
 
   .navbar{
     margin-left: 0;
-    transition: margin-left .5s;
   }
 }
 

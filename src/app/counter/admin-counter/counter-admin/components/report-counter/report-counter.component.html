@@ -2,7 +2,7 @@
   <ng-container content>
     <div class="row">
       <div class="col-md-12">
-        <p>Counter Control</p>
+        <p>Report Counter -Counter Name-</p>
       </div>
     </div>
 
@@ -21,11 +21,22 @@
                 <label for="search">Search</label>
                 <input type="text" class="input" id="search" autocomplete="off">
               </div>
+              <div class="col-md-4">
+                <label>Date</label>
+                <mat-form-field  class="input date">
+                  <mat-date-range-input color="" [rangePicker]="picker" [formGroup]="dateRange">
+                    <input matStartDate formControlName="start" placeholder="Start Date">
+                    <input matEndDate formControlName="end" placeholder="End Date">
+                  </mat-date-range-input>
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-date-range-picker #picker></mat-date-range-picker>
+                </mat-form-field>
+              </div>
               <div class="col-md-2 d-flex align-items-end">
                 <span class="btn text-center mt-3">Search</span>
               </div>
-              <div class="col-md-6 d-flex align-items-end justify-content-lg-end justify-content-md-end">
-                <a routerLink="/admin/counter/add"><span class="btn mt-3">Add Counter</span></a>
+              <div class="col-md-2 d-flex align-items-end justify-content-lg-end justify-content-md-end">
+                <a><span class="btn mt-3">Print Report</span></a>
               </div>
             </div>
           </div>
@@ -39,24 +50,19 @@
           <div class="card-body table-responsive-sm">
             <table class="table text-white">
               <thead>
-                <tr>
-                  <th>No</th>
-                  <th>Counter Name</th>
-                  <th>Purpose</th>
-                  <th>Status</th>
-                  <th width="5%" class="text-left ">Actions</th>
-                </tr>
+              <tr>
+                <th>No</th>
+                <th>Note</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
               </thead>
               <tbody>
               <tr>
                 <td>1</td>
-                <td>Lorem </td>
-                <td>Purpose</td >
-                <td>None Active </td>
-                <td class="d-flex justify-content-between">
-                  <a routerLink="/admin/counter/report"  class="btn btn-sm btn-report"><i class="fa-solid fa-file"></i></a>
-                  <a routerLink="/admin/counter/edit" class="btn btn-sm ms-2"><i class="fa-solid fa-pen text-white"></i></a>
-                </td >
+                <td>Note</td>
+                <td>Status</td>
+                <td>Date</td>
               </tr>
               </tbody>
             </table>

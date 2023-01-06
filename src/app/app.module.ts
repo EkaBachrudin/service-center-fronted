@@ -7,6 +7,7 @@ import {AuthModule} from "./auth/auth.module";
 import {CounterModule} from "./counter/counter.module";
 import {SideBarModule} from "./shared/side-bar/side-bar.module";
 import {ContentModule} from "./shared/content/content.module";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {ContentModule} from "./shared/content/content.module";
     ContentModule,
     AuthModule,
     CounterModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

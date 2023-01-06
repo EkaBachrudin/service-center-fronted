@@ -1,0 +1,81 @@
+.card{
+  background-color: var(--30);
+  border-radius: 3px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  padding: 20px;
+}
+
+.input{
+  display: block;
+  width: 100%;
+  font-size: 12px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 3px;
+  background-color: var(--5);
+  outline: none;
+  border: none;
+  margin: 10px 0;
+}
+
+.btn{
+  background-color: var(--10);
+  color: white;
+  border-radius: 3px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.btn-back{
+  background-color: var(--50);
+  color: white;
+  border-radius: 3px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.btn-delete{
+  background-color: rgba(188, 27, 27, 0.4);
+  color: white;
+  width: 100px;
+  border-radius: 3px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.btn-remove{
+  background-color: var(--50);
+  color: white;
+  border-radius: 3px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.btn-assign{
+  background-color: var(--30);
+  color: white;
+  border-radius: 3px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.row:last-child{
+  margin-bottom: 200px;
+}
+
+td{
+  border-bottom: none;
+}
+
+.modal-content{
+  padding: 20px;
+  border: none;
+  border-radius: 3px;
+  background-color: var(--50);
+}
+
+.btn-close-modal{
+  background-color: var(--30);
+  color: white;
+  border-radius: 3px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+
+
+

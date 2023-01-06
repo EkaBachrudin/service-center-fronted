@@ -7,3 +7,13 @@
   --10: #A27B5C;
   --5: #DCD7C9;
 }
+html {background-color: var(--50)}
+html::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+html {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}

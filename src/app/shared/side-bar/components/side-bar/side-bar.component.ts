@@ -103,8 +103,8 @@ export class SideBarComponent implements OnInit {
 
     sidebar.style.left = '0';
     navbar.style.marginLeft = '250px';
-    navbar.style.transitionDuration = '500ms';
-    sidebar.style.transitionDuration = '500ms';
+    navbar.style.transitionDuration = '0ms';
+    sidebar.style.transitionDuration = '0ms';
     content.style.marginLeft = '250px';
   };
 
@@ -116,8 +116,8 @@ export class SideBarComponent implements OnInit {
 
     sidebar.style.left = '-100%';
     navbar.style.marginLeft = '0';
-    navbar.style.transitionDuration = '500ms';
-    sidebar.style.transitionDuration = '500ms';
+    navbar.style.transitionDuration = '0ms';
+    sidebar.style.transitionDuration = '0ms';
     content.style.marginLeft = '0';
   };
 
