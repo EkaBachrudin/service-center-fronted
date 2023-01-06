@@ -1,6 +1,10 @@
 .content {
   margin-left: 250px;
   transition: margin-left .5s;
+  height: 100vh;
+  background-color: var(--50);
+  font-family: 'Inknut Antiqua', serif;
+  color: white;
 }
 
 @media screen and (max-width: 1000px) {
