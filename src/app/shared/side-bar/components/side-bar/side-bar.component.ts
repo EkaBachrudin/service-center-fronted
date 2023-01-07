@@ -15,6 +15,11 @@ export class SideBarComponent implements OnInit {
   isOpenSidebar: any;
   w: any;
 
+  url = {
+    admin: this.router.url.includes("admin"),
+    user: this.router.url.includes("user"),
+  }
+
   ngOnInit(): void {
     this.w = window.innerWidth;
     if (this.w <= 1000) {

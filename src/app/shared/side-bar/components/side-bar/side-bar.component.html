@@ -26,35 +26,70 @@
     <h4>User Name</h4>
     <p>User Role</p>
   </div>
-  <div class="menu">
-    <div class="item">
-      <a routerLink="/admin">
+  <div  *ngIf="url.admin; else route">
+    <div class="menu">
+      <div class="item">
+        <a routerLink="/admin">
         <span class="icon-manu">
           <i class="fa-solid fa-chart-pie"></i>
         </span>
-        Dashboard
-        <span routerLinkActive="is-active" [routerLinkActiveOptions]="{exact: true}"></span>
-      </a>
-    </div>
-    <div class="item">
-      <a routerLink="/admin/counter">
+          Dashboard
+          <span routerLinkActive="is-active" [routerLinkActiveOptions]="{exact: true}"></span>
+        </a>
+      </div>
+      <div class="item">
+        <a routerLink="/admin/counter">
         <span class="icon-manu">
           <i class="fa-solid fa-laptop"></i>
         </span>
-        Counter
-        <span routerLinkActive="is-active"></span>
-      </a>
-    </div>
-    <!--collapse-->
-    <!-- <div class="item">
-      <a href="#" class="sub-btn" (click)="slideToggle($event, 'table', 200)"> Table <i class="fas fa-angle-right dropdown"></i> </a>
-      <div class="sub-menu"  id="table">
-        <a href="#" class="sub-item">Sub item 01</a>
-        <a href="#" class="sub-item">Sub item 02</a>
-        <a href="#" class="sub-item">Sub item 03</a>
+          Counter
+          <span routerLinkActive="is-active"></span>
+        </a>
       </div>
-    </div> -->
-    <!--end collapse-->
+      <!--collapse-->
+      <!-- <div class="item">
+        <a href="#" class="sub-btn" (click)="slideToggle($event, 'table', 200)"> Table <i class="fas fa-angle-right dropdown"></i> </a>
+        <div class="sub-menu"  id="table">
+          <a href="#" class="sub-item">Sub item 01</a>
+          <a href="#" class="sub-item">Sub item 02</a>
+          <a href="#" class="sub-item">Sub item 03</a>
+        </div>
+      </div> -->
+      <!--end collapse-->
+    </div>
   </div>
+
+  <ng-template #route>
+    <div class="menu">
+      <div class="item">
+        <a routerLink="/user">
+        <span class="icon-manu">
+          <i class="fa-solid fa-chart-pie"></i>
+        </span>
+          Dashboard
+          <span routerLinkActive="is-active" [routerLinkActiveOptions]="{exact: true}"></span>
+        </a>
+      </div>
+      <div class="item">
+        <a routerLink="/user/counter">
+        <span class="icon-manu">
+          <i class="fa-solid fa-laptop"></i>
+        </span>
+          Counter
+          <span routerLinkActive="is-active"></span>
+        </a>
+      </div>
+      <!--collapse-->
+      <!-- <div class="item">
+        <a href="#" class="sub-btn" (click)="slideToggle($event, 'table', 200)"> Table <i class="fas fa-angle-right dropdown"></i> </a>
+        <div class="sub-menu"  id="table">
+          <a href="#" class="sub-item">Sub item 01</a>
+          <a href="#" class="sub-item">Sub item 02</a>
+          <a href="#" class="sub-item">Sub item 03</a>
+        </div>
+      </div> -->
+      <!--end collapse-->
+    </div>
+  </ng-template>
 </div>
 
