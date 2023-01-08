@@ -10,14 +10,23 @@
             <h1 id="title"><strong>LOGIN</strong></h1>
             <small class="small text-white">Start New Session</small>
           </div>
-          <form>
-            <div class="d-flex justify-content-center">
-              <input type="text" class="input d-block" placeholder="username">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div *ngIf="errors?.error" class="mt-3 text-center text-secondary">
+              *{{ errors?.error }}
+            </div>
+            <div *ngIf="errors?.email">
+              <small class="text-secondary">* {{ errors?.email }}</small>
             </div>
             <div class="d-flex justify-content-center">
-              <input type="password" class="input d-block" placeholder="password">
+              <input type="text" formControlName="email" class="input d-block" placeholder="email">
             </div>
-            <div class="btn btn-dark btn-sm shadow-sm">LOGIN</div>
+            <div *ngIf="errors?.password">
+              <small class="text-secondary">* {{ errors?.password }}</small>
+            </div>
+            <div class="d-flex justify-content-center">
+              <input type="password" formControlName="password" class="input d-block" placeholder="password">
+            </div>
+            <button type="submit" class="btn btn-dark btn-sm shadow-sm">LOGIN</button>
           </form>
         </div>
       </div>
