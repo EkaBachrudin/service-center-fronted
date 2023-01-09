@@ -5,12 +5,17 @@ import { ContentModule } from '../../../shared/content/content.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from 'src/app/shared/auth/auth.guard';
+import { RoleGuard } from 'src/app/shared/auth/role.guard';
 
 const routes = [
   {
     path: 'user',
     component: DashboardUserCounterComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      breadCum: 'user / dashboard',
+      role: 'User Counter',
+    },
   },
 ];
 

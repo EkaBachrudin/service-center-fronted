@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable, of, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 // User interface
 export class User {
@@ -12,6 +12,9 @@ export class User {
   providedIn: 'root',
 })
 export class AuthService {
+  static rolesUser() {
+    throw new Error('Method not implemented.');
+  }
   constructor(private http: HttpClient) {}
   // User registration
   register(user: User): Observable<any> {
@@ -25,6 +28,12 @@ export class AuthService {
   profileUser(): Observable<any> {
     return this.http.get('http://127.0.0.1:8000/api/user-profile');
   }
+
+  // Access user roles
+  rolesUser() {
+    return this.http.get('http://127.0.0.1:8000/api/user-roles');
+  }
+
   // Logout
   logout(): Observable<any> {
     return this.http.post<any>('http://127.0.0.1:8000/api/login', null);

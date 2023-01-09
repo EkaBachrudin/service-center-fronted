@@ -7,7 +7,10 @@
   --10: #A27B5C;
   --5: #DCD7C9;
 }
-html {background-color: var(--50)}
+html {
+  background-color: var(--50);
+  border: none;
+}
 html::-webkit-scrollbar {
   display: none;
 }

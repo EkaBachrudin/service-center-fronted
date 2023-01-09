@@ -1,24 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',
-  styleUrls: ['./side-bar.component.scss']
+  styleUrls: ['./side-bar.component.scss'],
 })
 export class SideBarComponent implements OnInit {
-
-  constructor(
-    public router: Router,
-  ) {}
+  constructor(public router: Router) {}
 
   isOpenSidebar: any;
   w: any;
+  username = localStorage.getItem('user');
+  roles = JSON.parse(localStorage.getItem('roles') || '{}');
 
   url = {
-    admin: this.router.url.includes("admin"),
-    user: this.router.url.includes("user"),
-  }
+    admin: this.router.url.includes('admin'),
+    user: this.router.url.includes('user'),
+  };
 
   ngOnInit(): void {
     this.w = window.innerWidth;
@@ -125,5 +124,4 @@ export class SideBarComponent implements OnInit {
     sidebar.style.transitionDuration = '0ms';
     content.style.marginLeft = '0';
   };
-
 }

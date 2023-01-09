@@ -12,6 +12,7 @@ import { AuthGuard } from './shared/auth/auth.guard';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/auth/auth.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RoleGuard } from './shared/auth/role.guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +30,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
   ],
   providers: [
+    RoleGuard,
     AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,

@@ -12,27 +12,44 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AuthGuard } from 'src/app/shared/auth/auth.guard';
+import { RoleGuard } from 'src/app/shared/auth/role.guard';
 
 const routes = [
   {
     path: 'admin/counter',
     component: CounterAdminComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      breadCum: 'admin / counter',
+      role: 'Admin Counter',
+    },
   },
   {
     path: 'admin/counter/add',
     component: AddCounterComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      breadCum: 'admin / counter / add counter',
+      role: 'Admin Counter',
+    },
   },
   {
     path: 'admin/counter/edit',
     component: EditCounterComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      breadCum: 'admin / counter / edit counter',
+      role: 'Admin Counter',
+    },
   },
   {
     path: 'admin/counter/report',
     component: ReportCounterComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      breadCum: 'admin / counter / report counter',
+      role: 'Admin Counter',
+    },
   },
 ];
 
