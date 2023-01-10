@@ -17,10 +17,10 @@ import { RoleGuard } from './shared/auth/role.guard';
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    BrowserModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    BrowserModule,
     AuthModule,
     AppRoutingModule,
     SideBarModule,
