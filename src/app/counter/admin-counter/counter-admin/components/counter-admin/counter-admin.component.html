@@ -50,8 +50,11 @@
                 </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let counter of counters ; let i = index">
-                <td>1</td>
+              <tr *ngFor="let counter of counters | paginate: {
+                                                      itemsPerPage: perPage,
+                                                      currentPage: currentPage,
+                                                      totalItems: totalData } ; let i = index">
+                <td>{{(i+1)*currentPage}}</td>
                 <td>{{counter.name}} </td>
                 <td>{{counter.purpose}}</td >
                 <td *ngIf="counter.status_counters_id == 1;else statusBlock"> Active </td>
@@ -63,7 +66,9 @@
                 </td >
               </tr>
               </tbody>
+              
             </table>
+            <pagination-controls (pageChange)="changePage(status.value, search.value,currentPage = $event)"></pagination-controls>
           </div>
         </div>
       </div>

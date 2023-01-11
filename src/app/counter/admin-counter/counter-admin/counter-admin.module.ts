@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CounterAdminComponent } from './components/counter-admin/counter-admin.component';
 import { ContentModule } from '../../../shared/content/content.module';
@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AuthGuard } from 'src/app/shared/auth/auth.guard';
 import { RoleGuard } from 'src/app/shared/auth/role.guard';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 const routes = [
   {
@@ -60,6 +61,7 @@ const routes = [
     ReportCounterComponent,
   ],
   imports: [
+    NgxPaginationModule,
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
