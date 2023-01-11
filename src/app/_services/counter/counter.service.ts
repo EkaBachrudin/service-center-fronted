@@ -9,8 +9,13 @@ import { environment } from 'src/environments/environment';
 export class CounterService {
   constructor(private http: HttpClient) {}
 
-  get() {
-    return this.http.get<CounterInterface[]>(environment.baseUrl + '/counters');
+  get(params: any) {
+    return this.http.get<CounterInterface[]>(
+      environment.baseUrl + '/counters',
+      {
+        params,
+      }
+    );
   }
 
   create(payload: any) {

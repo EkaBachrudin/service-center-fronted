@@ -23,7 +23,7 @@ export class AuthInterceptor implements HttpInterceptor {
       tap(
         () => {},
         (err: any) => {
-          if (err.status == 401 && err.status == 'Unauthenticated') {
+          if (err.status == 401) {
             Swal.fire('Your seasson has expired', 'Relogin please!', 'error');
             localStorage.clear();
             this.router.navigate(['/login']);
