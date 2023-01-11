@@ -35,14 +35,14 @@
       </div>
     </div>
 
-    <div class="row mt-3">
+    <div class="row mt-3 mb-5">
       <div class="col-md-12">
         <div class="card">
           <div class="card-body table-responsive-sm">
             <table class="table text-white">
               <thead>
                 <tr>
-                  <th>No</th>
+                  <th class="text-center">No</th>
                   <th>Counter Name</th>
                   <th>Purpose</th>
                   <th>Status</th>
@@ -54,7 +54,7 @@
                                                       itemsPerPage: perPage,
                                                       currentPage: currentPage,
                                                       totalItems: totalData } ; let i = index">
-                <td>{{(i+1)*currentPage}}</td>
+                <td class="text-center">{{absoluteIndex(i)}}</td>
                 <td>{{counter.name}} </td>
                 <td>{{counter.purpose}}</td >
                 <td *ngIf="counter.status_counters_id == 1;else statusBlock"> Active </td>

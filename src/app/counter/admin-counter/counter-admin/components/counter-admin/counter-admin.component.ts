@@ -51,4 +51,8 @@ export class CounterAdminComponent implements OnInit {
     this.currentPage = e;
     this.load(status, search, e);
   }
+
+  absoluteIndex(indexOnPage: number): number {
+    return this.perPage * (this.currentPage - 1) + indexOnPage + 1;
+  }
 }
