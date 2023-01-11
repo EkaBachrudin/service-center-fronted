@@ -62,7 +62,7 @@
                 
                 <td class="d-flex justify-content-center">
                   <a routerLink="/admin/counter/report"  class="btn btn-sm btn-report"><i class="fa-solid fa-file"></i></a>
-                  <a routerLink="/admin/counter/edit" class="btn btn-sm ms-2"><i class="fa-solid fa-pen text-white"></i></a>
+                  <a [routerLink]="['/admin/counter/edit', counter.id]" class="btn btn-sm ms-2"><i class="fa-solid fa-pen text-white"></i></a>
                 </td >
               </tr>
               </tbody>

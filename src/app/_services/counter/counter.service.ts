@@ -18,18 +18,25 @@ export class CounterService {
     );
   }
 
+  getById(id: number) {
+    return this.http.get<CounterInterface[]>(
+      environment.baseUrl + '/counter/' + id
+    );
+  }
+
   create(payload: any) {
     return this.http.post<any>(environment.baseUrl + '/counter', payload);
   }
 
-  update(payload: CounterInterface) {
+  update(payload: any) {
+    console.log('SERVICE', payload);
     return this.http.put<any>(
-      environment.baseUrl + `/note/${payload.id}`,
+      environment.baseUrl + `/counter/${payload.id}`,
       payload
     );
   }
 
   delete(id: number) {
-    return this.http.delete(environment.baseUrl + `/note/${id}`);
+    return this.http.delete(environment.baseUrl + `/counter/${id}`);
   }
 }

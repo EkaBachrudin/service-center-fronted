@@ -10,18 +10,29 @@
       <div class="col-md-6">
         <div class="card">
           <div class="card-body">
-            <div class="form-group">
-              <label for="purpose">Purpose</label>
-              <input type="text" id="purpose" class="input">
-            </div>
-            <div class="form-group">
-              <label for="countername">Counter name</label>
-              <input type="text" id="countername" class="input">
-            </div>
-            <div class="form-group mt-5 d-flex justify-content-between">
-              <div class="btn">Submit</div>
-              <a routerLink="/admin/counter"><div class="btn btn-back">Back</div></a>
-            </div>
+            <form [formGroup]="counterForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label>Purpose</label>
+                <small *ngIf="formErrors.purpose" class="text-danger"> *Fill this purpose field</small>
+                <input formControlName="purpose" type="text" class="input">
+              </div>
+              <div class="form-group">
+                <label>Counter name</label>
+                <small *ngIf="formErrors.name" class="text-danger"> *Fill this name field</small>
+                <input formControlName="name" type="text" class="input">
+              </div>
+              <div class="form-group">
+                 <label for="status">Status</label>
+                  <select formControlName="status_counters_id" class="input" id="status" #status>
+                    <option value="1">Active</option>
+                    <option value="2">Non Active</option>
+                  </select>
+              </div>
+              <div class="form-group mt-5 d-flex justify-content-between">
+                <button type="submit" class="btn">Submit</button>
+                <a routerLink="/admin/counter"><div class="btn btn-back">Back</div></a>
+              </div>
+            </form>
           </div>
         </div>
       </div>

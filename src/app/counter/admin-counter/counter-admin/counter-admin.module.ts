@@ -34,7 +34,7 @@ const routes = [
     },
   },
   {
-    path: 'admin/counter/edit',
+    path: 'admin/counter/edit/:id',
     component: EditCounterComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {
