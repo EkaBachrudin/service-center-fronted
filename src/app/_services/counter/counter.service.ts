@@ -19,7 +19,7 @@ export class CounterService {
   }
 
   create(payload: any) {
-    return this.http.post<any>(environment.baseUrl + '/note', payload);
+    return this.http.post<any>(environment.baseUrl + '/counter', payload);
   }
 
   update(payload: CounterInterface) {

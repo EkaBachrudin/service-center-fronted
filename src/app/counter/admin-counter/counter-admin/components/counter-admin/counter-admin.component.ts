@@ -38,7 +38,6 @@ export class CounterAdminComponent implements OnInit {
     this.counterService.get(params).subscribe((data: any) => {
       this.counters = data.data;
       this.totalData = data.totalData;
-      console.log(this.totalData);
     });
   }
 
