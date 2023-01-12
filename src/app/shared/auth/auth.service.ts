@@ -38,4 +38,9 @@ export class AuthService {
   logout(): Observable<any> {
     return this.http.post<any>('http://127.0.0.1:8000/api/login', null);
   }
+
+  //Get All Users
+  getAllUsers(): Observable<any> {
+    return this.http.get('http://127.0.0.1:8000/api/users');
+  }
 }

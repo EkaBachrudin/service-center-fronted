@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
+import { AuthService } from 'src/app/shared/auth/auth.service';
 import { CounterService } from 'src/app/_services/counter/counter.service';
 import Swal from 'sweetalert2';
 
@@ -15,7 +16,8 @@ export class EditCounterComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
-    private counterService: CounterService
+    private counterService: CounterService,
+    private authService: AuthService
   ) {
     this.counterForm = this.fb.group({
       id: [''],
@@ -27,6 +29,7 @@ export class EditCounterComponent implements OnInit {
 
   idParam: number;
   counterForm: FormGroup;
+  allUsers: [];
 
   formErrors = {
     name: '',
@@ -71,5 +74,34 @@ export class EditCounterComponent implements OnInit {
         });
       }
     });
+  }
+
+  getAllusers() {
+    this.authService.getAllUsers().subscribe((data: any) => {
+      this.allUsers = data.data;
+    });
+  }
+
+  @ViewChild('closebutton') closebutton;
+  assignError = false;
+
+  assignUser(data: any) {
+    if (data) {
+      let userForm: FormGroup = this.fb.group({
+        user_id: [data],
+      });
+      this.counterService.assignUser(this.idParam, userForm.value).subscribe();
+      this.assignError = false;
+      this.closebutton.nativeElement.click();
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else {
+      this.assignError = true;
+    }
   }
 }

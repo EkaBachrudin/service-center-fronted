@@ -39,4 +39,11 @@ export class CounterService {
   delete(id: number) {
     return this.http.delete(environment.baseUrl + `/counter/${id}`);
   }
+
+  assignUser(id: number, payload: any) {
+    return this.http.post<any>(
+      environment.baseUrl + `/counter/assignUser/${id}`,
+      payload
+    );
+  }
 }

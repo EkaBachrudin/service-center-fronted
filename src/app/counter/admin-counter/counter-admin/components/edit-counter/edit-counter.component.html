@@ -29,7 +29,7 @@
                   </select>
               </div>
               <div class="form-group mt-5 d-flex justify-content-between">
-                <button type="submit" class="btn">Submit</button>
+                <button type="submit" class="btn">Update</button>
                 <a routerLink="/admin/counter"><div class="btn btn-back">Back</div></a>
               </div>
             </form>
@@ -49,7 +49,7 @@
         <div class="col-md-12">
           <div class="d-flex justify-content-between mb-3">
             <p>User Counter Counter</p>
-            <a class="btn btn-assign" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Assign User</a>
+            <a class="btn btn-assign" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="getAllusers()">Assign User</a>
           </div>
           <div class="card">
             <div class="card-body table-responsive-sm">
@@ -64,7 +64,7 @@
                 <tbody>
                 <tr>
                   <td>1</td>
-                  <td>Si Amang Paling DOyan Kpio Item Gk DI Anduk </td>
+                  <td>Si Amang Paling Doyan Kopio Item Gk DI Anduk </td>
                   <td class="text-center">
                     <a class="btn btn-remove"><i class="fa-solid fa-trash"></i></a>
                   </td >
@@ -77,19 +77,21 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade-scale" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel">
+    <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-body">
             <div class="form-group">
-              <label> Select ser</label>
-              <select class="input">
-                <option value="">Select User</option>
+              <label> Select user </label>
+              <small *ngIf="assignError" class="text-danger"> *please select user</small>
+              <select class="input" #userSelect>
+                <option value=""></option>
+                <option *ngFor="let user of allUsers" [value]="user['id']" >{{user['name']}}</option>
               </select>
             </div>
             <div class="d-flex justify-content-between mt-4">
-              <button type="button" class="btn">Submit</button>
-              <button type="button" class="btn btn-close-modal" data-bs-dismiss="modal">Back</button>
+              <button type="button" class="btn" (click)="assignUser(userSelect.value)">Save</button>
+              <button #closebutton type="button" class="btn btn-close-modal" data-bs-dismiss="modal">Back</button>
             </div>
           </div>
         </div>
