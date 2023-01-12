@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
-import { AuthService } from 'src/app/shared/auth/auth.service';
 import { CounterService } from 'src/app/_services/counter/counter.service';
+import { UserService } from 'src/app/_services/user/user.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,7 +17,7 @@ export class EditCounterComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private counterService: CounterService,
-    private authService: AuthService
+    private userService: UserService
   ) {
     this.counterForm = this.fb.group({
       id: [''],
@@ -57,6 +57,8 @@ export class EditCounterComponent implements OnInit {
         this.router.navigate(['/admin/counter']);
       }
     });
+
+    this.loadUsers();
   }
 
   onSubmit() {
@@ -77,7 +79,7 @@ export class EditCounterComponent implements OnInit {
   }
 
   getAllusers() {
-    this.authService.getAllUsers().subscribe((data: any) => {
+    this.userService.getAllUsers().subscribe((data: any) => {
       this.allUsers = data.data;
     });
   }
@@ -103,5 +105,12 @@ export class EditCounterComponent implements OnInit {
     } else {
       this.assignError = true;
     }
+  }
+
+  users: any;
+  loadUsers(): void {
+    this.userService.getUserByCounter(this.idParam).subscribe((data: any) => {
+      this.users = data.data;
+    });
   }
 }

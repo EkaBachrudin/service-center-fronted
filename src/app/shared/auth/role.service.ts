@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { AuthService } from './auth.service';
+import { UserService } from 'src/app/_services/user/user.service';
 @Injectable({
   providedIn: 'root',
 })
 export class RoleService {
-  constructor(private authService: AuthService) {}
+  constructor(private userService: UserService) {}
 
   getRoles() {
     let roles: any;
-    this.authService.rolesUser().subscribe((data: any) => (roles = data));
+    this.userService.rolesUser().subscribe((data: any) => (roles = data));
     console.log(roles);
     return roles;
   }

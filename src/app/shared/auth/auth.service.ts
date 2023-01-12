@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { map, Observable, of, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 // User interface
 export class User {
-  name!: String;
-  email!: String;
-  password!: String;
-  password_confirmation!: String;
+  name!: string;
+  email!: string;
+  password!: string;
+  password_confirmation!: string;
 }
 @Injectable({
   providedIn: 'root',
@@ -24,23 +24,9 @@ export class AuthService {
   signin(user: User): Observable<any> {
     return this.http.post<any>('http://127.0.0.1:8000/api/login', user);
   }
-  // Access user profile
-  profileUser(): Observable<any> {
-    return this.http.get('http://127.0.0.1:8000/api/user-profile');
-  }
-
-  // Access user roles
-  rolesUser() {
-    return this.http.get('http://127.0.0.1:8000/api/user-roles');
-  }
 
   // Logout
   logout(): Observable<any> {
     return this.http.post<any>('http://127.0.0.1:8000/api/login', null);
-  }
-
-  //Get All Users
-  getAllUsers(): Observable<any> {
-    return this.http.get('http://127.0.0.1:8000/api/users');
   }
 }
