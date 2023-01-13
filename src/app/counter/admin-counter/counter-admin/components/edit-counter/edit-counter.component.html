@@ -41,7 +41,7 @@
     <div class="row mt-5">
      <div class="col-md-12">
        <p>Delete This Counter *All of this counter data will be lost</p>
-       <div class="btn btn-delete">Delete</div>
+       <div (click)="deleteCounter()" class="btn btn-delete">Delete</div>
      </div>
     </div>
 
@@ -66,7 +66,7 @@
                   <td>{{i+1}}</td>
                   <td>{{user.name}}</td>
                   <td class="text-center">
-                    <a class="btn btn-remove"><i class="fa-solid fa-trash"></i></a>
+                    <a class="btn btn-remove" (click)="unAssignUser(user.id)"><i class="fa-solid fa-trash"></i></a>
                   </td >
                 </tr>
                 </tbody>
