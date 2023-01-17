@@ -9,7 +9,7 @@
     <div class="row">
       <div class="col-md-6">
         <div class="card">
-          <div class="card-body">
+          <div class="card-body" *ngIf="counterForm.value['id'];else loading">
             <form [formGroup]="counterForm" (ngSubmit)="onSubmit()">
               <div class="form-group">
                 <label>Purpose</label>
@@ -34,6 +34,11 @@
               </div>
             </form>
           </div>
+          <ng-template #loading>
+              <div id="loading" class="text-center pt-3" style="height: 100px;">
+                <app-loading></app-loading>
+              </div>
+            </ng-template>
         </div>
       </div>
     </div>
@@ -53,7 +58,7 @@
           </div>
           <div class="card">
             <div class="card-body table-responsive-sm">
-              <table class="table text-white">
+              <table class="table text-white" *ngIf="users;else loading">
                 <thead>
                 <tr>
                   <th>No</th>
@@ -71,6 +76,11 @@
                 </tr>
                 </tbody>
               </table>
+              <ng-template #loading>
+                <div id="loading" class="text-center pt-3" style="height: 100px;">
+                  <app-loading></app-loading>
+                </div>
+              </ng-template>
             </div>
           </div>
         </div>

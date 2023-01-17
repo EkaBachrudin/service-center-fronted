@@ -38,7 +38,7 @@
     <div class="row mt-3 mb-5">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-body table-responsive-sm">
+          <div class="card-body table-responsive-sm" *ngIf="counters ;else loading">
             <table class="table text-white">
               <thead>
                 <tr>
@@ -59,17 +59,22 @@
                 <td>{{counter.purpose}}</td >
                 <td *ngIf="counter.status_counters_id == 1;else statusBlock"> Active </td>
                 <ng-template #statusBlock><td>None Active</td></ng-template>
-                
+
                 <td class="d-flex justify-content-center">
                   <a routerLink="/admin/counter/report"  class="btn btn-sm btn-report"><i class="fa-solid fa-file"></i></a>
                   <a [routerLink]="['/admin/counter/edit', counter.id]" class="btn btn-sm ms-2"><i class="fa-solid fa-pen text-white"></i></a>
                 </td >
               </tr>
               </tbody>
-              
+
             </table>
             <pagination-controls (pageChange)="changePage(status.value, search.value,currentPage = $event)"></pagination-controls>
           </div>
+            <ng-template #loading>
+              <div id="loading" class="text-center pt-3" style="height: 100px;">
+                <app-loading></app-loading>
+              </div>
+            </ng-template>
         </div>
       </div>
     </div>

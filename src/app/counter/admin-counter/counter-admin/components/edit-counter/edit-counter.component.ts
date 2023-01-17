@@ -111,6 +111,7 @@ export class EditCounterComponent implements OnInit {
       this.counterService.assignUser(this.idParam, userForm.value).subscribe();
       this.assignError = false;
       this.closebutton.nativeElement.click();
+      this.loadUsers();
       Swal.fire({
         position: 'center',
         icon: 'success',

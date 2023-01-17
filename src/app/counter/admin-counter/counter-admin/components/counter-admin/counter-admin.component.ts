@@ -1,5 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { hideLoader } from 'src/app/shared/utils/loading';
 import { CounterService } from 'src/app/_services/counter/counter.service';
 import { CounterInterface } from 'src/app/_type/counter/counter.interface';
 
@@ -9,7 +10,7 @@ import { CounterInterface } from 'src/app/_type/counter/counter.interface';
   styleUrls: ['./counter-admin.component.scss'],
 })
 export class CounterAdminComponent implements OnInit {
-  counters: CounterInterface[] = [];
+  counters: CounterInterface[];
   currentPage: number = 1;
   perPage: number = 10;
   totalData: any;
@@ -17,6 +18,7 @@ export class CounterAdminComponent implements OnInit {
   constructor(private counterService: CounterService) {}
 
   ngOnInit(): void {
+    console.log(this.counters);
     this.load('', '', 1);
   }
 
