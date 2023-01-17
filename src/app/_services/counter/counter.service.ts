@@ -29,7 +29,6 @@ export class CounterService {
   }
 
   update(payload: any) {
-    console.log('SERVICE', payload);
     return this.http.put<any>(
       environment.baseUrl + `/counter/${payload.id}`,
       payload
@@ -50,6 +49,12 @@ export class CounterService {
   unAssignUser(id: number) {
     return this.http.delete<any>(
       environment.baseUrl + `/counter/unAssignUser/${id}`
+    );
+  }
+
+  getCounterByUser(id: number) {
+    return this.http.get<CounterInterface[]>(
+      environment.baseUrl + `/counter/getByUser/${id}`
     );
   }
 }

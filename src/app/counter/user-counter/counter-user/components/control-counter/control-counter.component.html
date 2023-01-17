@@ -15,17 +15,22 @@
             <div class="row">
                 <div class="col-md-5 my-1">
                     <div class="card">
-                        <div class="card-body text-center">
+                        <div class="card-body text-center" *ngIf="counter;else loading">
                             <div class="my-3">
                                 <h4 class="space text-muted">Counter Name</h4>
-                                <h3 class="space">Counter Name</h3>
+                                <h3 class="space">{{counter.name}}</h3>
                             </div>
                             <div class="my-3">
                                 <h4 class="space text-muted">Counter Purpose</h4>
-                                <h3 class="space">Counter Purpose</h3>
+                                <h3 class="space">{{counter.purpose}}</h3>
                             </div>
                             <span class="accent"></span>
                         </div>
+                        <ng-template #loading>
+                                <div id="loading" class="text-center pt-3" style="height: 100px;">
+                                  <app-loading></app-loading>
+                                </div>
+                        </ng-template>
                     </div>
                 </div>
                 <div class="col-md-2 my-1">
@@ -37,7 +42,7 @@
                 </div>
                 <div class="col-md-2 my-1">
                     <div class="card">
-                        <div class="card-body text-center"> 
+                        <div class="card-body text-center">
                             <strong style="font-size: 30px;">003</strong>
                         </div>
                     </div>

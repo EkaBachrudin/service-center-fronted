@@ -9,7 +9,6 @@ export class RoleService {
   getRoles() {
     let roles: any;
     this.userService.rolesUser().subscribe((data: any) => (roles = data));
-    console.log(roles);
     return roles;
   }
 }

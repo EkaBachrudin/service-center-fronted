@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class UserService {
 
   // Access user profile
   profileUser(): Observable<any> {
-    return this.http.get('http://127.0.0.1:8000/api/user-profile');
+    return this.http.get(environment.baseUrl + '/user-profile');
   }
 
   // Access user roles

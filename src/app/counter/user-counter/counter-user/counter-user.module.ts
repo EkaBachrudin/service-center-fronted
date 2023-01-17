@@ -19,7 +19,7 @@ const routes = [
     },
   },
   {
-    path: 'user/counter/control',
+    path: 'user/counter/control/:id',
     component: ControlCounterComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {
