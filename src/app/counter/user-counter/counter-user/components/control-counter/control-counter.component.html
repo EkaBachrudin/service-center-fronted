@@ -65,7 +65,7 @@
             <div class="row mt-4">
                <div class="col-md-5">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body" *ngIf="queues;else loadingQueue">
                         <table class="table text-white text-center" aria-hidden="true">
                             <thead>
                                 <tr>
@@ -74,25 +74,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>200</td>
-                                    <td>Waiting</td>
-                                </tr>
-                                <tr class="mark">
-                                    <td>200</td>
-                                    <td>Waiting</td>
-                                </tr>
-                                <tr>
-                                    <td>200</td>
-                                    <td>Waiting</td>
-                                </tr>
-                                <tr>
-                                    <td>200</td>
-                                    <td>Waiting</td>
-                                </tr>
+                              <ng-container *ngFor="let queue of queues">
+                                  <tr [ngClass]="{'mark' : queue.id == occureStatus.id}">
+                                      <td>{{queue.id}}</td>
+                                        <container-element [ngSwitch]="queue.status_queues_id">
+                                          <td *ngSwitchCase="1">Waiting</td>
+                                          <td *ngSwitchCase="2">Occure</td>
+                                          <td *ngSwitchCase="3">Done</td>
+                                          <td *ngSwitchCase="4">Skip</td>
+                                        </container-element>
+                                  </tr>
+                              </ng-container>
+
                             </tbody>
                         </table>
                     </div>
+                    <ng-template #loadingQueue>
+                                <div id="loading" class="text-center pt-3" style="height: 100px;">
+                                  <app-loading></app-loading>
+                                </div>
+                    </ng-template>
                 </div>
                </div>
             </div>

@@ -14,6 +14,7 @@ import { QueueInterface } from 'src/app/_type/queue/queue.interface';
 export class ControlCounterComponent implements OnInit {
   idParam: number;
   queues: QueueInterface[];
+  occureStatus: QueueInterface;
   counter: CounterInterface;
 
   constructor(
@@ -30,12 +31,20 @@ export class ControlCounterComponent implements OnInit {
         this.counterService.getById(id).subscribe((data: any) => {
           this.counter = data;
         });
+        this.getOccureStatus(id);
         return this.queueService.getAllQueueByCounterToday(id);
       })
     );
 
     fetchFromData$.subscribe((data: any) => {
       this.queues = data.data;
+    });
+  }
+
+  getOccureStatus(counterId: number) {
+    this.queueService.getOccureStatus(counterId).subscribe((data: any) => {
+      this.occureStatus = data.data;
+      console.log(this.occureStatus);
     });
   }
 }

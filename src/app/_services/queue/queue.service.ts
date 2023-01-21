@@ -14,4 +14,10 @@ export class QueueService {
       environment.baseUrl + `/queuesByCounter/today/${counterId}`
     );
   }
+
+  getOccureStatus(counterId: number) {
+    return this.http.get<QueueInterface>(
+      environment.baseUrl + `/queueStatusOccure/${counterId}`
+    );
+  }
 }
