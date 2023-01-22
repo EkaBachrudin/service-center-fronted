@@ -34,18 +34,25 @@
                     </div>
                 </div>
                 <div class="col-md-2 my-1">
-                    <div class="card btn">
+                    <div class="card btn" (click)="previous(currentOccureNumber)">
                        <div class="card-body">
                             <i class="fa-solid fa-caret-left"></i> Previous
                        </div>
                     </div>
                 </div>
                 <div class="col-md-2 my-1">
-                    <div class="card">
+                    <div class="card" *ngIf="occureStatus;else loadingAccure">
                         <div class="card-body text-center">
-                            <strong style="font-size: 30px;">003</strong>
+                            <strong style="font-size: 30px;" >
+                              {{currentOccureNumber}}
+                            </strong>
                         </div>
                     </div>
+                    <ng-template #loadingAccure>
+                                        <div id="loading" class="text-center">
+                                          <app-loading></app-loading>
+                                        </div>
+                    </ng-template>
                     <div class="card mt-3 btn btn-skip">
                         <div class="card-body text-center">
                             Skip
@@ -53,7 +60,7 @@
                     </div>
                 </div>
                 <div class="col-md-2 my-1">
-                    <div class="card btn">
+                    <div class="card btn" (click)="next(currentOccureNumber)">
                         <div class="card-body">
                             Next <i class="fa-solid fa-caret-right"></i>
                         </div>
@@ -65,7 +72,7 @@
             <div class="row mt-4">
                <div class="col-md-5">
                 <div class="card">
-                    <div class="card-body" *ngIf="queues;else loadingQueue">
+                    <div class="card-body" *ngIf="queues[0];else loadingQueue">
                         <table class="table text-white text-center" aria-hidden="true">
                             <thead>
                                 <tr>
@@ -74,9 +81,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                              <ng-container *ngFor="let queue of queues">
+                              <ng-container *ngFor="let queue of queues;let i = index">
                                   <tr [ngClass]="{'mark' : queue.id == occureStatus.id}">
-                                      <td>{{queue.id}}</td>
+                                      <td>{{queue.no}}</td>
                                         <container-element [ngSwitch]="queue.status_queues_id">
                                           <td *ngSwitchCase="1">Waiting</td>
                                           <td *ngSwitchCase="2">Occure</td>
@@ -85,7 +92,6 @@
                                         </container-element>
                                   </tr>
                               </ng-container>
-
                             </tbody>
                         </table>
                     </div>
