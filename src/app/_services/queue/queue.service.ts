@@ -46,6 +46,7 @@ export class QueueService {
       environment.baseUrl + `/changeStatusQueue/${queueId}`,
       {
         status_queues_id: 4,
+        counters_id: counterId,
       }
     );
   }

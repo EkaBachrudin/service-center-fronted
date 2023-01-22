@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
+import { Location } from '@angular/common';
 import { CounterService } from 'src/app/_services/counter/counter.service';
 import { QueueService } from 'src/app/_services/queue/queue.service';
 import { CounterInterface } from 'src/app/_type/counter/counter.interface';
@@ -22,7 +23,8 @@ export class ControlCounterComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private queueService: QueueService,
-    private counterService: CounterService
+    private counterService: CounterService,
+    private _location: Location
   ) {}
 
   ngOnInit(): void {
@@ -30,6 +32,8 @@ export class ControlCounterComponent implements OnInit {
   }
 
   loadQueue() {
+    this.occureStatus = null;
+    this.queues = [];
     let fetchFromData$ = this.route.paramMap.pipe(
       switchMap((param: any) => {
         let id = Number(param.get('id'));
@@ -43,6 +47,7 @@ export class ControlCounterComponent implements OnInit {
     );
 
     fetchFromData$.subscribe((data: any) => {
+      this.isDataToday(data.data);
       data.data.map((data: any, index: number) => {
         let q: any = {
           id: data.id,
@@ -76,6 +81,7 @@ export class ControlCounterComponent implements OnInit {
       this.queueService
         .previous(this.queues[numberCurrentOccure - 1].id, this.idParam)
         .subscribe();
+      this.loadQueue();
     }
   }
 
@@ -92,10 +98,31 @@ export class ControlCounterComponent implements OnInit {
       this.queueService
         .next(this.queues[numberCurrentOccure - 1].id, this.idParam)
         .subscribe();
+      this.loadQueue();
     }
   }
 
-  skip() {
-    this.queueService.skip(0, 0);
+  skip(numberCurrentOccure: number) {
+    if (numberCurrentOccure == this.queues[this.queues.length - 1].no) {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Your in the lats of queue you cant next the queue',
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    } else {
+      this.queueService
+        .skip(this.queues[numberCurrentOccure - 1].id, this.idParam)
+        .subscribe();
+      this.loadQueue();
+    }
+  }
+
+  isDataToday(data: QueueInterface[]) {
+    if (data.length == 0) {
+      Swal.fire('No data', 'There is no queue data for today', 'error');
+      return this._location.back();
+    }
   }
 }
