@@ -33,38 +33,42 @@
                         </ng-template>
                     </div>
                 </div>
-                <div class="col-md-2 my-1">
-                    <div class="card btn" (click)="previous(currentOccureNumber)">
-                       <div class="card-body">
-                            <i class="fa-solid fa-caret-left"></i> Previous
-                       </div>
-                    </div>
-                </div>
-                <div class="col-md-2 my-1">
-                    <div class="card" *ngIf="occureStatus;else loadingAccure">
-                        <div class="card-body text-center">
-                            <strong style="font-size: 30px;" >
-                              {{currentOccureNumber}}
-                            </strong>
+                <div class="col-md-7">
+                  <div class="row">
+                    <div class="col-md-4 my-1">
+                        <div class="card btn" (click)="previous(currentOccureNumber)">
+                          <div class="card-body">
+                                <i class="fa-solid fa-caret-left"></i> Previous
+                          </div>
                         </div>
                     </div>
-                    <ng-template #loadingAccure>
-                                        <div id="loading" class="text-center">
-                                          <app-loading></app-loading>
-                                        </div>
-                    </ng-template>
-                    <div class="card mt-3 btn btn-skip" (click)="skip(currentOccureNumber)">
-                        <div class="card-body text-center">
-                            Skip
+                    <div class="col-md-4 my-1">
+                        <div class="card" *ngIf="occureStatus;else loadingOccure">
+                            <div class="card-body text-center">
+                                <strong style="font-size: 30px;">
+                                    {{currentOccureNumber != 0 ? currentOccureNumber : 'No Data'}}
+                                </strong>
+                            </div>
+                        </div>
+                        <ng-template #loadingOccure>
+                                            <div id="loading" class="text-center">
+                                              <app-loading></app-loading>
+                                            </div>
+                        </ng-template>
+                        <div class="card mt-3 btn btn-skip" (click)="skip(currentOccureNumber)" *ngIf="currentOccureNumber != 0">
+                            <div class="card-body text-center">
+                                Skip
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-2 my-1">
-                    <div class="card btn" (click)="next(currentOccureNumber)">
-                        <div class="card-body">
-                            Next <i class="fa-solid fa-caret-right"></i>
+                    <div class="col-md-4 my-1">
+                        <div class="card btn" (click)="next(currentOccureNumber)" *ngIf="currentOccureNumber != 0">
+                            <div class="card-body">
+                                Next <i class="fa-solid fa-caret-right"></i>
+                            </div>
                         </div>
                     </div>
+                  </div>
                 </div>
             </div>
 
@@ -72,7 +76,7 @@
             <div class="row mt-4">
                <div class="col-md-5">
                 <div class="card">
-                    <div class="card-body" *ngIf="queues[0];else loadingQueue">
+                    <div class="card-body">
                         <table class="table text-white text-center" aria-hidden="true">
                             <thead>
                                 <tr>
@@ -95,11 +99,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <ng-template #loadingQueue>
-                                <div id="loading" class="text-center pt-3" style="height: 100px;">
-                                  <app-loading></app-loading>
-                                </div>
-                    </ng-template>
+
                 </div>
                </div>
             </div>

@@ -21,6 +21,12 @@ export class QueueService {
     );
   }
 
+  latestQueueByCounter(counterId: number) {
+    return this.http.get<QueueInterface>(
+      environment.baseUrl + `/latestQueueByCounter/today/${counterId}`
+    );
+  }
+
   next(queueId: number, counterId: number) {
     return this.http.put<any>(
       environment.baseUrl + `/changeStatusQueue/${queueId}`,
@@ -46,6 +52,16 @@ export class QueueService {
       environment.baseUrl + `/changeStatusQueue/${queueId}`,
       {
         status_queues_id: 4,
+        counters_id: counterId,
+      }
+    );
+  }
+
+  toOccure(queueId: number, counterId: number) {
+    return this.http.put<any>(
+      environment.baseUrl + `/changeStatusQueue/${queueId}`,
+      {
+        status_queues_id: 2,
         counters_id: counterId,
       }
     );

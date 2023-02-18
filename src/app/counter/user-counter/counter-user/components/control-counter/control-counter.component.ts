@@ -64,7 +64,19 @@ export class ControlCounterComponent implements OnInit {
 
   getOccureStatus(counterId: number) {
     this.queueService.getOccureStatus(counterId).subscribe((data: any) => {
-      this.occureStatus = data.data;
+      if (data.data != null) {
+        this.occureStatus = data.data;
+      } else {
+        this.currentOccureNumber = 0;
+        this.occureStatus = {
+          id: 0,
+          counters_id: 0,
+          status_queues_id: 0,
+          note: '',
+          created_at: '',
+          updated_at: '',
+        };
+      }
     });
   }
 
@@ -78,45 +90,34 @@ export class ControlCounterComponent implements OnInit {
         timer: 2000,
       });
     } else {
-      this.queueService
-        .previous(this.queues[numberCurrentOccure - 1].id, this.idParam)
-        .subscribe();
-      this.loadQueue();
+      if (numberCurrentOccure == 0) {
+        this.queueService
+          .latestQueueByCounter(this.idParam)
+          .subscribe((data: any) => {
+            this.queueService.toOccure(data.data.id, this.idParam).subscribe();
+            this.loadQueue();
+          });
+      } else {
+        this.queueService
+          .previous(this.queues[numberCurrentOccure - 1].id, this.idParam)
+          .subscribe();
+        this.loadQueue();
+      }
     }
   }
 
   next(numberCurrentOccure: number) {
-    if (numberCurrentOccure == this.queues[this.queues.length - 1].no) {
-      Swal.fire({
-        position: 'center',
-        icon: 'error',
-        title: 'Your in the lats of queue you cant next the queue',
-        showConfirmButton: false,
-        timer: 2000,
-      });
-    } else {
-      this.queueService
-        .next(this.queues[numberCurrentOccure - 1].id, this.idParam)
-        .subscribe();
-      this.loadQueue();
-    }
+    this.queueService
+      .next(this.queues[numberCurrentOccure - 1].id, this.idParam)
+      .subscribe();
+    this.loadQueue();
   }
 
   skip(numberCurrentOccure: number) {
-    if (numberCurrentOccure == this.queues[this.queues.length - 1].no) {
-      Swal.fire({
-        position: 'center',
-        icon: 'error',
-        title: 'Your in the lats of queue you cant next the queue',
-        showConfirmButton: false,
-        timer: 2000,
-      });
-    } else {
-      this.queueService
-        .skip(this.queues[numberCurrentOccure - 1].id, this.idParam)
-        .subscribe();
-      this.loadQueue();
-    }
+    this.queueService
+      .skip(this.queues[numberCurrentOccure - 1].id, this.idParam)
+      .subscribe();
+    this.loadQueue();
   }
 
   isDataToday(data: QueueInterface[]) {
