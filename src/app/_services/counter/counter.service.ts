@@ -57,4 +57,10 @@ export class CounterService {
       environment.baseUrl + `/counter/getByUser/${id}`
     );
   }
+
+  getAllCounterPublic() {
+    return this.http.get<CounterInterface[]>(
+      environment.baseUrl + '/public/counters'
+    );
+  }
 }

@@ -6,3 +6,9 @@ export interface QueueInterface {
   created_at: string;
   updated_at: string;
 }
+
+export interface QueueDataResult {
+  counter_name: string;
+  counter_purpose: string;
+  number_queue: number;
+}

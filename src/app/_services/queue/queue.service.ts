@@ -9,6 +9,10 @@ import { environment } from 'src/environments/environment';
 export class QueueService {
   constructor(private http: HttpClient) {}
 
+  createPublic(payload: any) {
+    return this.http.post<any>(environment.baseUrl + '/public/queue', payload);
+  }
+
   getAllQueueByCounterToday(counterId: number) {
     return this.http.get<QueueInterface[]>(
       environment.baseUrl + `/queuesByCounter/today/${counterId}`
@@ -24,6 +28,12 @@ export class QueueService {
   latestQueueByCounter(counterId: number) {
     return this.http.get<QueueInterface>(
       environment.baseUrl + `/latestQueueByCounter/today/${counterId}`
+    );
+  }
+
+  latestQueueByCounterPublic(counterId: number) {
+    return this.http.get<QueueInterface>(
+      environment.baseUrl + `/public/latestQueueByCounter/today/${counterId}`
     );
   }
 

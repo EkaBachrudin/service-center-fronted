@@ -1,0 +1,77 @@
+<div class="container-fluid p-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>WELCOME VISITOR</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      Please select counter to get queue number
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-lg-6 col-xl-4 mt-2 mb-2" *ngFor="let counter of counters" data-bs-toggle="modal" data-bs-target="#modal">
+      <div class="card" (click)="generateQueue(counter.id)">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <div>
+              <p class="text-muted" style="margin-bottom: -3px;">Counter Name</p>
+              <h3>{{counter.name}}</h3>
+            </div>
+             <div>
+              <p class="text-muted" style="margin-bottom: -3px;">Total Queue</p>
+              <h3 class="text-center"><strong>{{counter.total_today == 0 ? 'No Queue' : counter.total_today }}</strong></h3>
+            </div>
+            <div>
+              <p class="text-muted" style="margin-bottom: -3px;">Counter Purpose</p>
+              <h3>{{counter.purpose}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modalLabel">Request queue</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-danger"> <strong> Download the this request queue / take screen capture prevent loss of queue numbers</strong></p>
+        <div id="content" #content class="border p-2 shadow mt-5 w-100" style="border-radius: 3px;">
+          <table>
+            <tr>
+              <th>Counter </th>
+              <th class="mx-4">:</th>
+              <td> {{queueDataResult.counter_name}}</td>
+            </tr>
+            <tr>
+              <th>Counter Purpose </th>
+              <th class="mx-4">:</th>
+              <td> {{queueDataResult.counter_purpose}}</td>
+            </tr>
+          </table>
+          <div class="mt-4 text-center">
+            <h2>Your Queue Number</h2>
+            <h1 style="font-size: 80px;" class="mt-4"><strong>{{queueDataResult.number_queue}}</strong></h1>
+          </div>
+          <div class="text-center mt-5">
+            <p><small>Thank you for trusting us for this service. Please enjoy while waiting in line</small></p>
+          </div>
+        </div>
+        <div class="text-center mt-5">
+          <p>Please download this pdf for queue number</p>
+          <button (click)="makePdf()" class="btn btn-primary" style="border-radius: 3px;">Download</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 3px;">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
